@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aplikasi Keuangan Sederhana</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Aplikasi Keuangan</h1>
+    <p>Tambah kategori, catat pemasukan & pengeluaran, lihat saldo & persentase</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <div class="card">
+        <h3>Saldo</h3>
+        <p id="balance">Rp 0</p>
+      </div>
+      <div class="card">
+        <h4>Pemasukan</h4>
+        <p id="total-income">Rp 0</p>
+      </div>
+      <div class="card">
+        <h4>Pengeluaran</h4>
+        <p id="total-expense">Rp 0</p>
+      </div>
+      <div class="card">
+        <h4>Kategori Pengeluaran Terbesar</h4>
+        <p id="top-category">-</p>
+      </div>
+    </section>
+
+    <section class="forms">
+      <div class="box">
+        <h3>Tambah Kategori</h3>
+        <form id="category-form">
+          <input type="text" id="category-name" placeholder="Nama kategori (mis. Makanan)" required />
+          <button type="submit">Tambah kategori</button>
+        </form>
+        <ul id="categories-list"></ul>
+      </div>
+
+      <div class="box">
+        <h3>Tambah Transaksi</h3>
+        <form id="transaction-form">
+          <select id="type">
+            <option value="income">Pemasukan</option>
+            <option value="expense">Pengeluaran</option>
+          </select>
+          <input type="number" id="amount" placeholder="Jumlah (angka)" min="0" required />
+          <select id="category-select"></select>
+          <input type="text" id="desc" placeholder="Keterangan (opsional)" />
+          <input type="date" id="date" />
+          <button type="submit">Simpan transaksi</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="analytics">
+      <div class="box wide">
+        <h3>Grafik Pengeluaran per Kategori</h3>
+        <canvas id="expenseChart" height="200"></canvas>
+      </div>
+
+      <div class="box narrow">
+        <h3>Persentase Pengeluaran</h3>
+        <ul id="expense-percent-list"></ul>
+      </div>
+    </section>
+
+    <section class="transactions">
+      <h3>Daftar Transaksi</h3>
+      <table id="transactions-table">
+        <thead>
+          <tr><th>Tanggal</th><th>Tipe</th><th>Jumlah</th><th>Kategori</th><th>Keterangan</th><th>Aksi</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <small>Dibuat sebagai contoh. Data disimpan di localStorage browser.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
